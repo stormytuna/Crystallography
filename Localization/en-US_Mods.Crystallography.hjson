@@ -1,2 +1,16 @@
-# This file will automatically update with entries for new content after a build and reload.
+Items: {
+	ArtifactItem: {
+		DisplayName: Artifact Item
+		Tooltip: ""
+	}
 
+	Gem: {
+		DisplayName: Gem
+		Tooltip: ""
+	}
+
+	TestingArtifact: {
+		DisplayName: Testing Artifact
+		Tooltip: ""
+	}
+}
