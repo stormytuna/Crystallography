@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 namespace Crystallography.Core.Artifacts;
 // this sucks. please learn EC 
 public abstract class GemEffect : ModType{
@@ -12,9 +13,13 @@ public abstract class GemEffect : ModType{
 		ModTypeLookup<GemEffect>.Register(this);
 		switch (Type) {
 			case EffectType.Major:
+				if (!GemTypeLoader.MajorEffects.ContainsKey(GemType))
+					GemTypeLoader.MajorEffects[GemType] = new List<GemEffect>();
 				GemTypeLoader.MajorEffects[GemType].Add(this);
 				break;
 			case EffectType.Minor:
+				if (!GemTypeLoader.MinorEffects.ContainsKey(GemType))
+					GemTypeLoader.MinorEffects[GemType] = new List<GemEffect>();
 				GemTypeLoader.MinorEffects[GemType].Add(this);
 				break;
 			case EffectType.Generic:

@@ -8,7 +8,7 @@ public class ArtifactMaterial(string name, int type, float amplifier, ArtifactMa
 	/// <summary>
 	///		Used for determining jewelry name based on material type.
 	/// </summary>
-	public readonly string Name = name;
+	public readonly new string Name = name;
 	/// <summary>
 	///		The ItemID of the material itself.
 	/// </summary>
