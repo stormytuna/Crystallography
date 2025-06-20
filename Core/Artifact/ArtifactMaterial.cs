@@ -2,7 +2,7 @@ using ReLogic.Content;
 
 namespace Crystallography.Core.Artifacts;
 
-public class ArtifactMaterial(string name, int type, float amplifier, ArtifactMaterial.EffectCallback? callback, string equipTexturePath) : ModType
+public class ArtifactMaterial(string name, int type, float amplifier, ArtifactMaterial.EffectCallback? callback, Asset<Texture2D>[] textures) : ModType
 {
 	#region Fields
 	/// <summary>
@@ -17,12 +17,14 @@ public class ArtifactMaterial(string name, int type, float amplifier, ArtifactMa
 	///		Multiplier for effect strength.
 	/// </summary>
 	public float Amplifier = amplifier;
-	public Asset<Texture2D> equipTexture { get; private set; }
+	/// <summary>
+	///		Index 0 is the item texture, index 1 is the equip texture.
+	/// </summary>
+	public readonly Asset<Texture2D>[] Textures = textures;
 	public readonly EffectCallback Callback = callback;
 	#endregion
 	protected sealed override void Register() {
 		ModTypeLookup<ArtifactMaterial>.Register(this);
-		equipTexture = ModContent.Request<Texture2D>(equipTexturePath);
 	}
 	public sealed override void SetupContent() {
 		SetStaticDefaults();

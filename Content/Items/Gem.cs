@@ -2,13 +2,14 @@ using System.Collections.Generic;
 using Crystallography.Core;
 using Crystallography.Core.Artifacts;
 using Crystallography.Core.Utilities;
+using Terraria.ModLoader.IO;
 
 namespace Crystallography.Content.Items;
 public class Gem : ModItem {
 	public GemData Data;
 	public override string Texture => Assets.Textures.Empty;
 	public override void SetDefaults() {
-		Data = new GemData(ItemID.Sapphire, 2, [], Color.White);
+		Data = new GemData(ItemID.Sapphire, 2, [GemTypeLoader.GemEffectLookup["TestEffect"]], Color.White);
 		var item = ContentSamples.ItemsByType[Data.Type];
 		Item.width = item.width;
 		Item.height = item.height;
@@ -25,5 +26,24 @@ public class Gem : ModItem {
 	}
 	public override void ModifyTooltips(List<TooltipLine> tooltips) {
 		base.ModifyTooltips(tooltips); // add gem effect listing here idk
+	}
+	public override void SaveData(TagCompound tag) {
+		tag["gemID"] = Data.Type;
+		tag["gemStrength"] = Data.Strength;
+		tag["gemColorOverride"] = Data.Color;
+		tag["gemEffectCount"] = Data.Effects.Length;
+		for (int i = 0; i < Data.Effects.Length; i++) {
+			tag[$"gemEffect{i}"] = Data.Effects[i].Name;
+		}
+	}
+	public override void LoadData(TagCompound tag) {
+		int id = tag.Get<int>("gemID");
+		float strength = tag.Get<float>("gemStrength");
+		Color gemColor = tag.Get<Color>("gemColorOverride");
+		GemEffect[] effects = new GemEffect[tag.Get<int>("gemEffectCount")];
+		for (int i = 0; i < effects.Length; i++) {
+			effects[i] = GemTypeLoader.GemEffectLookup[(string)tag[$"gemEffect{i}"]];
+		}
+		Data = new GemData(id, strength, effects, gemColor);
 	}
 }
