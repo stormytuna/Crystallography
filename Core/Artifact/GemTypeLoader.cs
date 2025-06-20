@@ -7,6 +7,7 @@ public static class GemTypeLoader {
 	public static readonly Dictionary<int, List<GemEffect>> MinorEffects = new Dictionary<int, List<GemEffect>>();
 	public static readonly List<GemEffect> GenericEffects = new List<GemEffect>();
 	public static readonly List<int> GemTypes = new List<int>();
+	public static readonly Dictionary<string, GemEffect> GemEffectLookup = new Dictionary<string, GemEffect>();
 	/// <summary>
 	///		Returns a random effect based on the <paramref name="itemType"/> and <paramref name="effectType"/>
 	///		

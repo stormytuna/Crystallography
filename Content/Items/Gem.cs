@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Crystallography.Core;
 using Crystallography.Core.Artifacts;
 using Crystallography.Core.Utilities;
@@ -21,5 +22,8 @@ public class Gem : ModItem {
 	public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI) {
 		CrystallographyUtils.DrawItemFromType(Data.Type, null, Item.Center-Main.screenPosition, alphaColor.MultiplyRGB(Data.Color), rotation, Vector2.Zero, scale, SpriteEffects.None);
 		return false;
+	}
+	public override void ModifyTooltips(List<TooltipLine> tooltips) {
+		base.ModifyTooltips(tooltips); // add gem effect listing here idk
 	}
 }

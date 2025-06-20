@@ -26,6 +26,7 @@ public abstract class GemEffect : ModType{
 				GemTypeLoader.GenericEffects.Add(this);
 				break;
 		}
+		GemTypeLoader.GemEffectLookup[this.Name] = this;
 	}
-	public abstract void Apply(Player player);
+	public abstract void Apply(Player player, GemData data);
 }

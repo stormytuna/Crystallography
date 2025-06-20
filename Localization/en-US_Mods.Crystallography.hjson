@@ -8,4 +8,9 @@ Items: {
 		DisplayName: Gem
 		Tooltip: ""
 	}
+
+	TestingArtifact: {
+		DisplayName: Testing Artifact
+		Tooltip: ""
+	}
 }
