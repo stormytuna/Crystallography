@@ -8,7 +8,7 @@ public class LowManaIncreaseDamage : GemEffect
 	public override int GemType => ItemID.Sapphire;
 	public override void Apply(Player player, GemData data) {
 		player.GetModPlayer<LowManaIncreaseDamagePlayer>().Active = true;
-		player.GetModPlayer<LowManaIncreaseDamagePlayer>().Strength = data.Strength;
+		player.GetModPlayer<LowManaIncreaseDamagePlayer>().Strength += data.Strength;
 	}
 }
 
