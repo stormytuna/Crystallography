@@ -13,6 +13,11 @@ Items: {
 		DisplayName: Testing Artifact
 		Tooltip: ""
 	}
+
+	RecoveryItem: {
+		DisplayName: Recovery Item
+		Tooltip: ""
+	}
 }
 
 GemData.Strength: Effect Strength: {0}
