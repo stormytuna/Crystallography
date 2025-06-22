@@ -1,5 +1,5 @@
 using Crystallography.Core.Artifacts;
-
+using Crystallography.Content.Items;
 namespace Crystallography.Content;
 /// <summary>
 /// Example of a Gem Effect.

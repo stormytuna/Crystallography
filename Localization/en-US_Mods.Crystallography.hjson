@@ -14,3 +14,13 @@ Items: {
 		Tooltip: ""
 	}
 }
+
+GemData.Strength: Effect Strength: {0}
+ArtifactUI.HintSlotItem: Click while holding a gem in your cursor to slot it here.
+
+GemEffects: {
+	Header: Gem Effects:
+	IncreaseDamageResistance: Increases your damage reduction by {0}
+	IncreaseDefense: Boosts your defense by {0}
+	IncreaseMaxHealth: Increases your max health by {0}
+}

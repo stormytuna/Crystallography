@@ -1,38 +1,45 @@
+using System.Collections.Generic;
+using Crystallography.Content.Items;
 using ReLogic.Content;
 
 namespace Crystallography.Core.Artifacts;
 
-public class ArtifactMaterial(string name, int type, float amplifier, ArtifactMaterial.EffectCallback? callback, Asset<Texture2D>[] textures) : ModType
-{
-	#region Fields
+public class ArtifactMaterial {
+	public static readonly Dictionary<int[], ArtifactMaterial> IngredientToMaterial = new Dictionary<int[], ArtifactMaterial>();
+	public ArtifactMaterial(string name, int[] ingredients, int type, float amplifier, ArtifactMaterial.EffectCallback? callback, string[] texturePaths, string? callbackDescriptionKey) {
+		Name = name;
+		Type = type;
+		Amplifier = amplifier;
+		CallbackDescription = callback is null ? "" : callbackDescriptionKey;
+		TexturePaths = new string[2] { texturePaths[0], texturePaths[1] };
+		Callback = callback is null ? DefaultCallback : callback;
+		IngredientToMaterial[ingredients] = this;
+	}
 	/// <summary>
-	///		Used for determining jewelry name based on material type.
+	///		The localization key for the name of this material.
 	/// </summary>
-	public readonly new string Name = name;
+	public readonly new string Name;
 	/// <summary>
 	///		The ItemID of the material itself.
 	/// </summary>
-	public readonly int Type = type;
+	public readonly int Type;
 	/// <summary>
 	///		Multiplier for effect strength.
 	/// </summary>
-	public float Amplifier = amplifier;
+	public float Amplifier;
+	/// <summary>
+	///		The localization key for the materials effect description.
+	/// </summary>
+	public string CallbackDescription;
 	/// <summary>
 	///		Index 0 is the item texture, index 1 is the equip texture.
 	/// </summary>
-	public readonly Asset<Texture2D>[] Textures = textures;
-	public readonly EffectCallback Callback = callback;
-	#endregion
-	protected sealed override void Register() {
-		ModTypeLookup<ArtifactMaterial>.Register(this);
-	}
-	public sealed override void SetupContent() {
-		SetStaticDefaults();
-	}
+	public readonly string[] TexturePaths;
+	public readonly EffectCallback Callback;
 	/// <summary>
 	///		Allows for extra effects based on the gem type.
 	///		Invoked during the gem effect activation.
 	/// </summary>
-	/// <param name="type">The gem item ID.</param>
-	public delegate void EffectCallback(int type, Player player);
+	public delegate void EffectCallback(ref GemData data, Player player);
+	private static void DefaultCallback(ref GemData data, Player player) { }
 }

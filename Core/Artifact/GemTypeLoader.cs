@@ -7,6 +7,9 @@ public static class GemTypeLoader {
 	public static readonly Dictionary<int, List<GemEffect>> MinorEffects = new Dictionary<int, List<GemEffect>>();
 	public static readonly List<GemEffect> GenericEffects = new List<GemEffect>();
 	public static readonly List<int> GemTypes = new List<int>();
+	/// <summary>
+	///		Returns a <see cref="GemEffect"/> instance based on its class name.
+	/// </summary>
 	public static readonly Dictionary<string, GemEffect> GemEffectLookup = new Dictionary<string, GemEffect>();
 	/// <summary>
 	///		Returns a random effect based on the <paramref name="itemType"/> and <paramref name="effectType"/>
@@ -20,10 +23,20 @@ public static class GemTypeLoader {
 		GemEffect effect;
 		switch (effectType) {
 			case GemEffect.EffectType.Major:
-				effect = Main.rand.NextFromList(MajorEffects[itemType].ToArray());
+				if (MajorEffects.TryGetValue(itemType, out var majors)) {
+					effect = Main.rand.NextFromCollection(majors);
+				}
+				else {
+					effect = Main.rand.NextFromCollection(GenericEffects);
+				}
 				break;
 			case GemEffect.EffectType.Minor:
-				effect = Main.rand.NextFromList(MinorEffects[itemType].ToArray());
+				if (MinorEffects.TryGetValue(itemType, out var minors)) {
+					effect = Main.rand.NextFromCollection(minors);
+				}
+				else {
+					effect = Main.rand.NextFromCollection(GenericEffects);
+				}
 				break;
 			default:
 				// idea: maybe make this return minor effects from a random type??

@@ -1,3 +1,4 @@
+using Crystallography.Content.Items;
 using Crystallography.Core.Artifacts;
 
 namespace Crystallography.Content.GemEffects.Amber;

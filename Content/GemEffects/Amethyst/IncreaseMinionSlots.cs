@@ -1,4 +1,5 @@
 using Crystallography.Core.Artifacts;
+using Crystallography.Content.Items;
 
 namespace Crystallography.Content.GemEffects.Amethyst;
 

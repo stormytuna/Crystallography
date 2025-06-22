@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Crystallography.Content.Items;
 namespace Crystallography.Core.Artifacts;
 // this sucks. please learn EC 
 public abstract class GemEffect : ModType{

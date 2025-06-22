@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.GameContent;
 
 namespace Crystallography.Core.Utilities;
-partial class CrystallographyUtils {
+public partial class CrystallographyUtils {
 	public static void DrawItemFromType(int type, Rectangle? frame, Vector2 position, Color drawColor, float rotation, Vector2 origin, float scale, SpriteEffects effects) => DrawItemFromType(type,frame,position,drawColor,rotation,origin, new Vector2(scale), effects);
 	public static void DrawItemFromType(int type, Rectangle? frame, Vector2 position, Color drawColor, float rotation, Vector2 origin, Vector2 scale, SpriteEffects effects) {
 		Main.instance.LoadItem(type);

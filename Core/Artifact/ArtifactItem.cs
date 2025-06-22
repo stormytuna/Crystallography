@@ -1,51 +1,77 @@
 
 using System.Collections.Generic;
 using Crystallography.Content.Items;
+using Crystallography.Core.UI;
+using Terraria.GameContent.UI.Elements;
 using Terraria.Localization;
 using Terraria.ModLoader.IO;
 
 namespace Crystallography.Core.Artifacts;
 
 public abstract class ArtifactItem : ModItem {
-	public override string Texture => Assets.Textures.Empty;
+	public override string Texture { 
+		get {
+			return Material?.TexturePaths[0] ?? Assets.Textures.Empty;		
+		} 
+	} 
 	public ArtifactMaterial Material;
-	public Gem[] Gems { get; private set; }
+	public Item[] Gems { get; set; }
 	public ArtifactItem() {
-		Gems = new Gem[GemCount];
+		if (Gems is null || Gems.Length == 0) 
+		Gems = new Item[GemCount];
 	}
 	public abstract int GemCount { get; }
 	public sealed override void SetDefaults() {
+		// testing
+		Material = new ArtifactMaterial("Gold", ItemID.GoldBar, 2, null, [$"Terraria/Images/Item_{ItemID.CrossNecklace}", Assets.Textures.Empty], null);
 		for (int i = 0; i < GemCount; i++) {
-			Gems[i] = new Item(ModContent.ItemType<Gem>()).ModItem as Gem;
+			Gems[i] = new Item(ModContent.ItemType<Gem>());
 			Gems[i].SetDefaults();
+			if (Gems[i].ModItem is Gem gem) {
+				gem.Artifact = Item.ModItem as ArtifactItem;
+			}
 		}
 		Item.accessory = true;
-		Item.SetNameOverride($"{Material?.Name} {Language.GetOrRegister($"{this.GetType().Name}")}");
+		Item.useStyle = ItemUseStyleID.HoldUp;
+		Item.useTime = Item.useAnimation = 2;
+		Item.SetNameOverride($"{Material?.Name} {PrettyPrintName()}");
+		Item.noUseGraphic = true;
 		SetArtifactDefaults();
 	}
 	public sealed override void UpdateAccessory(Player player, bool hideVisual) {
-		if (Gems is not null) {
-			foreach (var gem in Gems) {
-				Main.NewText(gem.Data.Type);
-				if (gem is not null)
-				foreach (var effect in gem.Data.Effects) {
-					effect.Apply(player, gem.Data);
+		foreach (var gem in Gems) {
+			var gemItem = gem.ModItem as Gem;
+			if (gemItem != null) {
+				var data = gemItem.Data;
+				Material.Callback(ref data, player);
+				foreach (var effect in gemItem.Data.Effects) {
+					effect.Apply(player, data);
 				}
 			}
 		}
 		UpdateAccessoryEquip(player, hideVisual);
 	}
+	public override bool AltFunctionUse(Player player) {
+		return true;
+	}
+	public override bool? UseItem(Player player) {
+		if (player.altFunctionUse == 2) {
+			UIManagerSystem.ToggleUI(this);
+			return true;
+		}
+		else return false;
+	}
 	public override void SaveData(TagCompound tag) {
 		tag["gemCount"] = Gems.Length;
 		for (int i = 0; i < Gems.Length; i++) {
-			tag["gem" + i] = ItemIO.Save(Gems[i].Item);
+			tag["gem" + i] = ItemIO.Save(Gems[i]);
 		}
 	}
 	public override void LoadData(TagCompound tag) {
 		var count = tag.Get<int>("gemCount");
-		Gems = new Gem[count];
+		Gems = new Item[count];
 		for (int i = 0; i < count; i++) {
-			Gems[i] = ItemIO.Load((TagCompound)tag["gem" + i]).ModItem as Gem;
+			Gems[i] = ItemIO.Load((TagCompound)tag["gem" + i]);
 		}
 	}
 	public virtual void UpdateAccessoryEquip(Player player, bool hideVisual) { }
@@ -55,5 +81,6 @@ public abstract class ArtifactItem : ModItem {
 	}
 	public override void ModifyTooltips(List<TooltipLine> tooltips) { 
 		base.ModifyTooltips(tooltips); // list material modifier, each gem, if shift is held down also list each gems effects
+		
 	}
 }

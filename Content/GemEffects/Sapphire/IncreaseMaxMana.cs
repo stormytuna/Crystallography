@@ -1,5 +1,5 @@
 using Crystallography.Core.Artifacts;
-
+using Crystallography.Content.Items;
 namespace Crystallography.Content.GemEffects.Sapphire;
 
 public class IncreaseMaxMana : GemEffect
