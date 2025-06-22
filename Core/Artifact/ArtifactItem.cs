@@ -23,7 +23,7 @@ public abstract class ArtifactItem : ModItem {
 	public abstract int GemCount { get; }
 	public sealed override void SetDefaults() {
 		// testing
-		Material = new ArtifactMaterial("Gold", ItemID.GoldBar, 2, null, [$"Terraria/Images/Item_{ItemID.CrossNecklace}", Assets.Textures.Empty], null);
+		Material = new ArtifactMaterial("Gold", [ItemID.GoldBar],ItemID.GoldBar, 2, null, [$"Terraria/Images/Item_{ItemID.CrossNecklace}", Assets.Textures.Empty], null);
 		for (int i = 0; i < GemCount; i++) {
 			Gems[i] = new Item(ModContent.ItemType<Gem>());
 			Gems[i].SetDefaults();
