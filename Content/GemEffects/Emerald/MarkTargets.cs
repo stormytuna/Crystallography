@@ -1,4 +1,5 @@
 using Crystallography.Core.Artifacts;
+using ReLogic.Content;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 
@@ -76,6 +77,12 @@ public class MarkTargetsPlayer : ModPlayer
 
 public class DrawMark : GlobalNPC
 {
+	private static Asset<Texture2D> _markTexture;
+
+	public override void Load() {
+		_markTexture = Mod.Assets.Request<Texture2D>("Assets/Textures/Marked");
+	}
+
 	public override void PostDraw(NPC npc, SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) {
 		var player = Main.LocalPlayer;
 		var markPlayer = player.GetModPlayer<MarkTargetsPlayer>();
@@ -83,16 +90,17 @@ public class DrawMark : GlobalNPC
 			return;
 		}
 
-		Main.instance.LoadItem(ItemID.MagicMirror);
-		var texture = TextureAssets.Item[ItemID.MagicMirror];
+		var texture = _markTexture;
+		float lerp = float.Sin(((float)Main.timeForVisualEffects * 0.08f) % Consts.TwoPi);
+		float scaleOffset = float.Lerp(-0.05f, 0.05f, lerp);
 		var drawData = new DrawData {
 			texture = texture.Value,
 			position = npc.Center - Main.screenPosition + new Vector2(0f, npc.gfxOffY),
 			sourceRect = texture.Frame(),
 			origin = texture.Size() / 2f,
 			color = Color.White,
-			rotation = ((float)Main.timeForVisualEffects * 0.1f) % Consts.TwoPi,
-			scale = new Vector2(1f),
+			rotation = 0f,
+			scale = new Vector2(1f + scaleOffset),
 		};
 		Main.EntitySpriteDraw(drawData);
 	}

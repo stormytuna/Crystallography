@@ -13,4 +13,9 @@ Items: {
 		DisplayName: Testing Artifact
 		Tooltip: ""
 	}
+
+	RecoveryItem: {
+		DisplayName: Recovery Item
+		Tooltip: ""
+	}
 }

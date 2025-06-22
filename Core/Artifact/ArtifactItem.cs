@@ -26,8 +26,6 @@ public abstract class ArtifactItem : ModItem {
 	public sealed override void UpdateAccessory(Player player, bool hideVisual) {
 		if (Gems is not null) {
 			foreach (var gem in Gems) {
-				Main.NewText(gem.Data.Type);
-				if (gem is not null)
 				foreach (var effect in gem.Data.Effects) {
 					effect.Apply(player, gem.Data);
 				}
