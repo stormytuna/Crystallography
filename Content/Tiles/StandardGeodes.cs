@@ -31,6 +31,7 @@ public class StandardGeodes : ModTile {
 		Main.tileOreFinderPriority[Type] = 551;
 		Main.tileShine2[Type] = true;
 		Main.tileShine[Type] = 975;
+		MinPick = 55; // Gold
 		AddMapEntry(CrystallographyUtils.GetTileMapColor(TileID.Stone), Language.GetText("Mods.Crystallography.Tiles.Geode.MapEntry"));
 
 	}

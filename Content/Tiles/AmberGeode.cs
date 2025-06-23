@@ -26,6 +26,7 @@ public class AmberGeode : ModTile {
 		Main.tileOreFinderPriority[Type] = 551;
 		Main.tileShine2[Type] = true;
 		Main.tileShine[Type] = 975;
+		MinPick = 55; // Gold
 		AddMapEntry(CrystallographyUtils.GetTileMapColor(TileID.Sand), Language.GetText("Mods.Crystallography.Tiles.Geode.MapEntry"));
 	}
 	public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b) {
