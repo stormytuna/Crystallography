@@ -21,4 +21,17 @@ public partial class CrystallographyUtils {
 				: texture.Frame();
 		}
 	}
+	public static void Draw9SliceInventoryPanel(SpriteBatch spriteBatch, Texture2D texture, Rectangle drawPosition, Color drawColor) {
+		drawPosition.Width = (int)MathHelper.Clamp(drawPosition.Width, 20, 2000);
+		drawPosition.Height = (int)MathHelper.Clamp(drawPosition.Height, 20, 2000);
+		spriteBatch.Draw(texture, new Rectangle(drawPosition.X, drawPosition.Y, 10, 10), new Rectangle(0, 0, 10, 10), drawColor);
+		spriteBatch.Draw(texture, new Rectangle(drawPosition.X + 10, drawPosition.Y, drawPosition.Width - 20, 10), new Rectangle(10, 0, 10, 10), drawColor);
+		spriteBatch.Draw(texture, new Rectangle(drawPosition.X + drawPosition.Width - 10, drawPosition.Y, 10, 10), new Rectangle(texture.Width - 10, 0, 10, 10), drawColor);
+		spriteBatch.Draw(texture, new Rectangle(drawPosition.X, drawPosition.Y + 10, 10, drawPosition.Height - 20), new Rectangle(0, 10, 10, 10), drawColor);
+		spriteBatch.Draw(texture, new Rectangle(drawPosition.X + 10, drawPosition.Y + 10, drawPosition.Width - 20, drawPosition.Height - 20), new Rectangle(10, 10, 10, 10), drawColor);
+		spriteBatch.Draw(texture, new Rectangle(drawPosition.X + drawPosition.Width - 10, drawPosition.Y + 10, 10, drawPosition.Height - 20), new Rectangle(texture.Width - 10, 10, 10, 10), drawColor);
+		spriteBatch.Draw(texture, new Rectangle(drawPosition.X, drawPosition.Y + drawPosition.Height - 10, 10, 10), new Rectangle(0, texture.Height - 10, 10, 10), drawColor);
+		spriteBatch.Draw(texture, new Rectangle(drawPosition.X + 10, drawPosition.Y + drawPosition.Height - 10, drawPosition.Width - 20, 10), new Rectangle(10, texture.Height - 10, 10, 10), drawColor);
+		spriteBatch.Draw(texture, new Rectangle(drawPosition.X + drawPosition.Width - 10, drawPosition.Y + drawPosition.Height - 10, 10, 10), new Rectangle(texture.Width - 10, texture.Height - 10, 10, 10), drawColor);
+	}
 }

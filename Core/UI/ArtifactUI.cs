@@ -133,6 +133,8 @@ public class ArtifactGemSlotUI : UIPanel {
 			}
 			else if (Main.mouseItem.IsAir && Gem is not null && !Gem.IsAir) {
 				var item = Gem.Clone();
+				if (!Main.playerInventory)
+					Main.playerInventory = true;
 				Main.mouseItem = item;
 				Main.LocalPlayer.inventory[58] = item;
 				Gem.TurnToAir(false);
@@ -146,7 +148,7 @@ public class ArtifactGemSlotUI : UIPanel {
 		Vector2 pos = new Vector2(Left.Pixels, Top.Pixels);
 		Vector2 nextPos = Vector2.SmoothStep(pos, DesiredLocation, 0.1f);
 		// cant get ts to work, maybe tuna can try fixing!!
-		//Vector2 nextPos = CrystallographyUtils.CubicLerp(Vector2.Zero, Vector2.SmoothStep(Vector2.Zero, DesiredLocation, 0.33f), Vector2.SmoothStep(Vector2.Zero, DesiredLocation, 0.66f), DesiredLocation, 0.2f);
+		//Vector2 nextPos = CrystallographyUtils.CubicLerp(Vector2.Zero, pos, DesiredLocation, Vector2.SmoothStep(Vector2.Zero, DesiredLocation, 0.2f), 0.01f);
 		Top.Set(nextPos.Y, 0);
 		Left.Set(nextPos.X, 0);
 		if (IsMouseHovering) {

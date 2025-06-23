@@ -18,6 +18,11 @@ Items: {
 		DisplayName: Recovery Item
 		Tooltip: ""
 	}
+
+	JewelryStation: {
+		DisplayName: Jewelry Station
+		Tooltip: ""
+	}
 }
 
 GemData.Strength: Effect Strength: {0}
@@ -28,4 +33,19 @@ GemEffects: {
 	IncreaseDamageResistance: Increases your damage reduction by {0}
 	IncreaseDefense: Boosts your defense by {0}
 	IncreaseMaxHealth: Increases your max health by {0}
+}
+
+JewelryUI: {
+	InputsText: Inputs
+	Mold: Mold
+	Output: Output
+}
+
+ArtifactMaterial: {
+	Name: {
+		Gold: Gold
+		Silver: Silver
+	}
+
+	DefaultCallbackDescription: Amplifies effect power by {0}x
 }
