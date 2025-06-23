@@ -68,4 +68,7 @@ GemEffects: {
 	SentryFreshSpawnDamageIncrease: Increases damage dealt by sentries by {0}% for 30 seconds after spawning
 	UniqueMinionsIncreaseDamage: Increases your summon damage by {0}% for each unique minion you have active
 	WhipSweetSpot: Increases damage dealt by whips by {0}% when hitting a target at the tip of your whip
+	DefenseIncreaseDamage: Increases your damage by {0} for every {1} points of defense you have ({2})
+	HeartsRestoreMore: Increases the amount of life restored by hearts by {0}%
+	NoHitIncreaseDamageReduction: Avoiding damage for a short time reduces damage taken on your next hit by up to {0}%
 }
