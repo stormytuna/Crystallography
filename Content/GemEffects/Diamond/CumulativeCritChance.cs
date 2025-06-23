@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using Crystallography.Content.GemEffects.Amethyst;
 using Crystallography.Core.Artifacts;
+using Terraria.Localization;
 
 namespace Crystallography.Content.GemEffects.Diamond;
 
@@ -11,11 +13,15 @@ public class CumulativeCritChance : GemEffect
 		player.GetModPlayer<CumulativeCritChancePlayer>().Active = true;
 		player.GetModPlayer<CumulativeCritChancePlayer>().Strength += data.Strength;
 	}
+	
+	public override LocalizedText GetFormattedTooltip(float strength) {
+		return Tooltip.WithFormatArgs(CumulativeCritChancePlayer.BaseEffect * strength);
+	}
 }
 
 public class CumulativeCritChancePlayer : ModPlayer
 {
-	private const float BaseEffect = 0.5f;
+	public const float BaseEffect = 0.005f;
 	
 	public bool Active = false;
 	public float Strength = 0f;
@@ -67,6 +73,6 @@ public class CumulativeCritChancePlayer : ModPlayer
 			return;
 		} 
 		
-		_cumulativeCritChanceMap[target.whoAmI] += BaseEffect * Strength;
+		_cumulativeCritChanceMap[target.whoAmI] += BaseEffect * Strength * 100f;
 	}
 }

@@ -1,4 +1,5 @@
 using Crystallography.Core.Artifacts;
+using Terraria.Localization;
 
 namespace Crystallography.Content.GemEffects.Amber;
 
@@ -10,6 +11,14 @@ public class NoHitIncreaseDamageReduction : GemEffect
 		player.GetModPlayer<NoHitIncreaseDamageReductionPlayer>().Active = true;
 		player.GetModPlayer<NoHitIncreaseDamageReductionPlayer>().Strength += data.Strength;
 	}
+	
+	public static int GetEffectStrength(Player player, float strength) {
+		return (int)(NoHitIncreaseDamageReductionPlayer.NoHitMaxEffect * strength);	
+	}
+	
+	public override LocalizedText GetFormattedTooltip(float strength) {
+		return Tooltip.WithFormatArgs(GetEffectStrength(Main.LocalPlayer, strength));
+	}
 }
 
 public class NoHitIncreaseDamageReductionPlayer : ModPlayer
@@ -17,7 +26,8 @@ public class NoHitIncreaseDamageReductionPlayer : ModPlayer
 	private const float NoHitCounterForMinEffect = 10 * 60;
 	private const float NoHitCounterForMaxEffect = 20 * 60;
 	private const float NoHitMinEffect = 0f;
-	private const float NoHitMaxEffect = 0.5f;
+	
+	public const float NoHitMaxEffect = 0.5f;
 	
 	public bool Active = false;
 	public float Strength = 0f;

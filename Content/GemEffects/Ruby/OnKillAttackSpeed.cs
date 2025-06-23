@@ -1,4 +1,5 @@
 using Crystallography.Core.Artifacts;
+using Terraria.Localization;
 
 namespace Crystallography.Content.GemEffects.Ruby;
 
@@ -10,12 +11,16 @@ public class OnKillAttackSpeed : GemEffect
  		player.GetModPlayer<OnKillAttackSpeedPlayer>().Active = true;
  		player.GetModPlayer<OnKillAttackSpeedPlayer>().Strength += data.Strength;
  	}
+    
+	public override LocalizedText GetFormattedTooltip(float strength) {
+		return Tooltip.WithFormatArgs(OnKillAttackSpeedPlayer.BaseEffect * strength);
+	}
 }
 
 public class OnKillAttackSpeedPlayer : ModPlayer
 {
 	private const int AttackSpeedTimerMax = 4 * 60;
-	private const float BaseEffect = 0.5f;
+	public const float BaseEffect = 0.5f;
 	
 	public bool Active = false;
 	public float Strength = 0f;

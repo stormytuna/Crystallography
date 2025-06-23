@@ -1,4 +1,5 @@
 using Crystallography.Core.Artifacts;
+using Terraria.Localization;
 
 namespace Crystallography.Content.GemEffects.Diamond;
 
@@ -10,12 +11,16 @@ public class IncreaseCritDamageDecreaseNonCritDamage : GemEffect
 		player.GetModPlayer<IncreaseCritDamageDecreaseNonCritDamagePlayer>().Active = true;
 		player.GetModPlayer<IncreaseCritDamageDecreaseNonCritDamagePlayer>().Strength += data.Strength;
 	}
+	
+	public override LocalizedText GetFormattedTooltip(float strength) {
+		return Tooltip.WithFormatArgs(IncreaseCritDamageDecreaseNonCritDamagePlayer.ExtraDamageOnCrit * strength, IncreaseCritDamageDecreaseNonCritDamagePlayer.LostDamageOnNonCrit * strength);
+	}
 }
 
 public class IncreaseCritDamageDecreaseNonCritDamagePlayer : ModPlayer
 {
-	private const float ExtraDamageOnCrit = 0.25f;
-	private const float LostDamageOnNonCrit = 0.2f;
+	public const float ExtraDamageOnCrit = 0.25f;
+	public const float LostDamageOnNonCrit = 0.2f;
 	
 	public bool Active = false;
 	public float Strength = 0f;

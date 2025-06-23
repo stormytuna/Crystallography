@@ -1,5 +1,6 @@
 using Crystallography.Core.Artifacts;
 using Crystallography.Content.Items;
+using Terraria.Localization;
 
 namespace Crystallography.Content.GemEffects.Amethyst;
 
@@ -10,5 +11,9 @@ public class IncreaseMinionSlots : GemEffect
 	public override void Apply(Player player, GemData data) {
 		player.maxMinions++;
 		player.maxTurrets--;
+	}
+	
+	public override LocalizedText GetFormattedTooltip(float strength) {
+		return Tooltip;
 	}
 }

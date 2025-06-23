@@ -1,4 +1,5 @@
 using Crystallography.Core.Artifacts;
+using Terraria.Localization;
 
 namespace Crystallography.Content.GemEffects.Topaz;
 
@@ -10,11 +11,15 @@ public class DoubleHits : GemEffect
 		player.GetModPlayer<DoubleHitsPlayer>().Active = true;
 		player.GetModPlayer<DoubleHitsPlayer>().Strength += data.Strength;
 	}
+	
+	public override LocalizedText GetFormattedTooltip(float strength) {
+		return Tooltip.WithFormatArgs(DoubleHitsPlayer.BaseEffect * strength);
+	}
 }
 
 public class DoubleHitsPlayer : ModPlayer
 {
-	private const float BaseEffect = 0.01f;
+	public const float BaseEffect = 0.01f;
 
 	private static bool PreventRecursion = false;
 	

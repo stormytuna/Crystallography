@@ -1,4 +1,5 @@
 using Crystallography.Core.Artifacts;
+using Terraria.Localization;
 
 namespace Crystallography.Content.GemEffects.Topaz;
 
@@ -10,11 +11,15 @@ public class DoubleLoot : GemEffect
 		player.GetModPlayer<DoubleLootPlayer>().Active = true;
 		player.GetModPlayer<DoubleLootPlayer>().Strength += data.Strength;
 	}
+	
+	public override LocalizedText GetFormattedTooltip(float strength) {
+		return Tooltip.WithFormatArgs(DoubleLootPlayer.BaseEffect * strength);
+	}
 }
 
 public class DoubleLootPlayer : ModPlayer
 {
-	private const float BaseEffect = 0.1f;
+	public const float BaseEffect = 0.1f;
 	
 	public bool Active = false;
 	public float Strength = 0f;

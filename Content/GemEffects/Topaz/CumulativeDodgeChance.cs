@@ -1,4 +1,6 @@
+using Crystallography.Content.GemEffects.Sapphire;
 using Crystallography.Core.Artifacts;
+using Terraria.Localization;
 
 namespace Crystallography.Content.GemEffects.Topaz;
 
@@ -10,11 +12,15 @@ public class CumulativeDodgeChance : GemEffect
 		player.GetModPlayer<CumulativeDodgeChancePlayer>().Active = true;
 		player.GetModPlayer<CumulativeDodgeChancePlayer>().Strength += data.Strength;
 	}
+	
+	public override LocalizedText GetFormattedTooltip(float strength) {
+		return Tooltip.WithFormatArgs(CumulativeDodgeChancePlayer.BaseEffect * strength);
+	}
 }
 
 public class CumulativeDodgeChancePlayer : ModPlayer
 {
-	private const float BaseEffect = 0.05f;
+	public const float BaseEffect = 0.05f;
 	
 	public bool Active = false;
 	public float Strength = 0f;

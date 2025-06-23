@@ -1,5 +1,6 @@
 using Crystallography.Core.Artifacts;
 using Terraria.DataStructures;
+using Terraria.Localization;
 
 namespace Crystallography.Content.GemEffects.Amethyst;
 
@@ -10,6 +11,10 @@ public class SentryFreshSpawnDamageIncrease : GemEffect
 	public override void Apply(Player player, GemData data) {
 		player.GetModPlayer<UniqueMinionsIncreaseDamagePlayer>().Active = true;
 		player.GetModPlayer<UniqueMinionsIncreaseDamagePlayer>().Strength += data.Strength;
+	}
+
+	public override LocalizedText GetFormattedTooltip(float strength) {
+		return Tooltip.WithFormatArgs(SentryFreshSpawnDamageIncreaseProjectile.BaseEffect * strength);
 	}
 }
 
@@ -26,7 +31,7 @@ public class SentryFreshSpawnDamageIncreasePlayer : ModPlayer
 
 public class SentryFreshSpawnDamageIncreaseProjectile : GlobalProjectile
 {
-	private const float BaseEffect = 0.2f;
+	public const float BaseEffect = 0.2f;
 	
 	private int _sentryLifeTimer = 0;
 	private bool _firstFrame = true;

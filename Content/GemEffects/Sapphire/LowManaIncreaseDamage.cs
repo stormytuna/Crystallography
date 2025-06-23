@@ -1,4 +1,6 @@
+using Crystallography.Content.GemEffects.Ruby;
 using Crystallography.Core.Artifacts;
+using Terraria.Localization;
 
 namespace Crystallography.Content.GemEffects.Sapphire;
 
@@ -10,6 +12,10 @@ public class LowManaIncreaseDamage : GemEffect
 		player.GetModPlayer<LowManaIncreaseDamagePlayer>().Active = true;
 		player.GetModPlayer<LowManaIncreaseDamagePlayer>().Strength += data.Strength;
 	}
+	
+	public override LocalizedText GetFormattedTooltip(float strength) {
+		return Tooltip.WithFormatArgs(LowManaIncreaseDamagePlayer.MaxEffect * strength);
+	}
 }
 
 public class LowManaIncreaseDamagePlayer : ModPlayer
@@ -17,7 +23,7 @@ public class LowManaIncreaseDamagePlayer : ModPlayer
 	private const float ManaPercentForMinEffect = 0.4f;
 	private const float ManaPercentForMaxEffect = 0.1f;
 	private const float MinEffect = 0f;
-	private const float MaxEffect = 0.2f;
+	public const float MaxEffect = 0.2f;
 
 	public bool Active;
 	public float Strength;

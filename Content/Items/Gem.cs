@@ -66,4 +66,9 @@ public class Gem : ModItem {
 		}
 		Data = new GemData(id, strength, effects, gemColor);
 	}
+	public override ModItem Clone(Item newEntity) {
+		var clone = (Gem)base.Clone(newEntity);
+		clone.Data = Data;
+		return clone;
+	}
 }

@@ -1,4 +1,5 @@
 using Crystallography.Core.Artifacts;
+using Terraria.Localization;
 
 namespace Crystallography.Content.GemEffects.Amethyst;
 
@@ -10,11 +11,15 @@ public class WhipSweetSpot : GemEffect
 		player.GetModPlayer<WhipSweetSpotPlayer>().Active = true;
 		player.GetModPlayer<WhipSweetSpotPlayer>().Strength += data.Strength;
 	}
+
+	public override LocalizedText GetFormattedTooltip(float strength) {
+		return Tooltip.WithFormatArgs(WhipSweetSpotPlayer.BaseEffect * strength);
+	}
 }
 
 public class WhipSweetSpotPlayer : ModPlayer
 {
-	private const float BaseEffect = 0.2f;
+	public const float BaseEffect = 0.2f;
 	
 	public bool Active = false;
 	public float Strength = 0f;

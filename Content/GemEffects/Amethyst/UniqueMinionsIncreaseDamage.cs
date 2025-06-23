@@ -1,4 +1,5 @@
 using Crystallography.Core.Artifacts;
+using Terraria.Localization;
 
 namespace Crystallography.Content.GemEffects.Amethyst;
 
@@ -10,11 +11,15 @@ public class UniqueMinionsIncreaseDamage : GemEffect
 		player.GetModPlayer<UniqueMinionsIncreaseDamagePlayer>().Active = true;
 		player.GetModPlayer<UniqueMinionsIncreaseDamagePlayer>().Strength += data.Strength;
 	}
+	
+	public override LocalizedText GetFormattedTooltip(float strength) {
+		return Tooltip.WithFormatArgs(UniqueMinionsIncreaseDamagePlayer.BaseEffect * strength);
+	}
 }
 
 public class UniqueMinionsIncreaseDamagePlayer : ModPlayer
 {
-	private const float BaseEffect = 0.05f;
+	public const float BaseEffect = 0.05f;
 	
 	public bool Active = false;
 	public float Strength = 0f;

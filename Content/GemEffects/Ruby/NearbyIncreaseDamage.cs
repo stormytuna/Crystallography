@@ -1,4 +1,6 @@
+using Crystallography.Content.GemEffects.Emerald;
 using Crystallography.Core.Artifacts;
+using Terraria.Localization;
 
 namespace Crystallography.Content.GemEffects.Ruby;
 
@@ -10,12 +12,16 @@ public class NearbyIncreaseDamage : GemEffect
 		player.GetModPlayer<NearbyIncreaseDamagePlayer>().Active = true;
 		player.GetModPlayer<NearbyIncreaseDamagePlayer>().Strength += data.Strength;
 	}
+	
+	public override LocalizedText GetFormattedTooltip(float strength) {
+		return Tooltip.WithFormatArgs(NearbyIncreaseDamagePlayer.BaseEffect * strength);
+	}
 }
 
 public class NearbyIncreaseDamagePlayer : ModPlayer
 {
 	private const float MaxRange = 12f * 16f;
-	private const float BaseEffect = 0.2f;
+	public const float BaseEffect = 0.2f;
 	public bool Active;
 	public float Strength;
 	
