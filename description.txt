@@ -1,1 +1,14 @@
-Modify this file with a description of your mod.
+Crystallography
+
+This is Roton, ILoveWater, and stormytuna's submission for tModJam #0! With the theme of "A study of one", we chose Crystallography as the basis for our mod.
+
+We're unable to fix any issues for the first week of release as per the tModJam rules, sorry!
+
+TLDR
+- Explore the underground to find new Geodes which drop Magically Enhanced Gems with random purity levels
+- Acquire 8 unique Artifact accessories, and slot in Gems to activate their effects
+- 8 different effect groups, with 22 Major and 27 Minor effects
+- Find an effect you don't like? Reroll it in the Gemball Machine
+- Multiplayer compatible
+
+For more information, visit this item on the Steam Workshop

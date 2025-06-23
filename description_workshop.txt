@@ -1,1 +1,154 @@
-This description will show up on the steam page, check out https://steamcommunity.com/comment/Guide/formattinghelp.
+[h1]Crystallography[/h1]
+
+This is Roton, ILoveWater, and stormytuna's submission for tModJam #0! With the theme of "A study of one", we chose Crystallography as the basis for our mod.
+
+We're unable to fix any issues for the first week of release as per the tModJam rules, sorry!
+
+[h2]TLDR[/h2]
+- Explore the underground to find new Geodes which drop Magically Enhanced Gems with random purity levels
+- Acquire 8 unique Artifact accessories, and slot in Gems to activate their effects
+- 8 different effect groups, with 22 Major and 27 Minor effects
+- Find an effect you don't like? Reroll it in the Gemball Machine
+- Multiplayer compatible
+
+[hr][/hr]
+
+[h2]Gem Effects[/h2]
+
+[h3]Ruby - Melee[/h3]
+Major:
+- Increased damage to nearby enemies
+- Increased defense effectiveness the lower your health
+- Killing an enemy grants an attack speed boost for a short time
+Minor:
+- Increased melee damage
+- Increased melee swing speed
+- Increased aggro
+- Reduce how far you get knocked back by attacks
+
+[h3]Emerald - Ranged[/h3]
+Major:
+- Damage increased against far away enemies
+- Marks a random target for death, increasing the damage they take
+- Being hit increases attack speed for a short time
+Minor:
+- Increased ranged damage
+- Reduced ammo consumption
+- Increased armor penetration
+
+[h3]Sapphire - Magic[/h3]
+Major:
+- Avoiding damage for a short time grants reduced mana cost
+- Damage increases the lower your mana
+- Grabbing a mana star grants a mana cost reduction buff for a short time
+Minor:
+- Increased magic damage
+- Increased mana
+- Increased mana regeneration
+
+[h3]Amethyst - Summoner[/h3]
+Major:
+- Increased damage for each unique minion you have active
+- Whips deal increased damage at the tip
+- Sentries deal increased damage for 30 seconds after spawning
+Minor:
+- Increased summon damage
+- +1 minion slot, but -1 sentry slot
+- +1 sentry slot, but -1 minion slot
+- Decreased aggro
+
+[h3]Diamond - Critical Strike Chance[/h3]
+Major:
+- When scoring a critical hit, you gain a large speed boost for a short time
+- Hits are granted a cumulative critical strike chance boost, resetting to 0 when you score a critical hit
+- Critical strikes deal more damage, but non-critical strikes deal less damage
+- Critical strikes spawn a Carat Apple that grants 10 Health and 10 Mana
+Minor:
+- Increased critical strike chance
+- Increased critical strike damage
+
+[h3]Topaz - Luck[/h3
+Major:
+- Grants a chance for enemies to drop extra loot
+- Grants a cumulative chance to dodge attacks, failing to dodge increases the chance, dodging via this method resets it to 0
+- Grants a chance to duplicate hits
+Minor:
+- Increased luck
+
+[h3]Amber - Defense[/h3]
+Major:
+- Grants a flat damage increase based on your defense
+- Increases the health restored by heart pickups
+- Avoiding damage for a short time grants a large boost to damage reduction
+Minor:
+- Increased defense
+- Increased damage resistance
+- Increased max health
+
+[h3]Generic[/h3]
+Minor:
+- Increased jump speed
+- Increased mining speed
+- Increased tool range
+- Increased movement speed
+- Increased knockback
+- Increased attack speed
+- Increased fall resistance
+
+[h2]Artifacts[/h2]
+
+Artifacts are how you make use of all those effects. Right click while holding an Artifact to open the Slotting Menu
+
+Golden Ring:
+- 1 slot
+- Crafted with 8 Gold Bars at a Table and Chair
+
+Unholy Ring:
+- 1 slot
+- Grants a 20% strength boost to Major effects of slotted gems
+- Crafted with 5 Demonite or Crimtane Bars and 3 Shadow Scales or Tissue Samples at an Anvil
+
+Lost Band:
+- 1 slot
+- Grants a 30% strength boost to Generic effects
+- 0.5% drop chance from Angry Bones in the Dungeon
+
+Golden Necklace:
+- 2 slots
+- Grants a 30% strength boost to Ruby gem effects
+- 0.8% drop chance from the Pirate Captain
+
+Encrusted Necklace:
+- 2 slots
+- Grants a 30% strength boost to Emerald gem effects
+- Found by fishing in the Ocean in Hardmode
+
+Shadowflame Strand:
+- 2 slots
+- Grants a 30% strength boost to Sapphire gem effects
+- 1.25% drop chance from the Goblin Sorcerer in Hardmode
+
+Spiderleg Charm:
+- 2 slots
+- Grants a 30% strength boost to Amethyst gem effects
+- 2% drop chance from Black Recluses
+
+Lunecklace:
+- 3 slots
+- Grants a 30% strength boost to all gem effects
+- Crafted with 2 of each Celestial Fragment at an Ancient Manipulator
+
+[h2]Misc[/h2]
+
+Gemball Machine:
+- Allows rerolling gems you've already acquired
+- Bought from the Party Girl
+
+[hr][/hr]
+
+[h2]Credits[/h2]
+- Jamzojamz and ArcTan for organising the event!
+
+[hr][/hr]
+
+Find the source code here: https://github.com/stormytuna/Crystallography

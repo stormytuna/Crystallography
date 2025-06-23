@@ -9,7 +9,7 @@ public class ShadowflameStrand : ArtifactItem
 	
 	public override GemData ModifyGemData(Player player, GemEffect effect, GemData data) {
 		if (data.Type == ItemID.Sapphire) {
-			return data with { Strength = data.Strength * 1.5f };
+			return data with { Strength = data.Strength * 1.3f };
 		}
 		
 		return base.ModifyGemData(player, effect, data);

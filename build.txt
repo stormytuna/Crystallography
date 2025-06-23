@@ -1,3 +1,4 @@
 displayName = Crystallography
-author = Roton, hydrophilia, &amp; stormytuna
-version = 0.1
+author = Roton, ILoveWater, & stormytuna
+version = 1.0.0
+includeSource = true
