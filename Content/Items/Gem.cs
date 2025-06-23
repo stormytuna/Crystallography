@@ -19,7 +19,7 @@ public class Gem : ModItem {
 	public ArtifactItem? Artifact;
 	public override string Texture => Assets.Textures.Empty;
 	public override void SetDefaults() {
-		Data = new GemData(ItemID.Sapphire, 2, [], Color.White);
+		//Data = new GemData(ItemID.Sapphire, 2, [], Color.White);
 		var item = ContentSamples.ItemsByType[Data.Type];
 		Item.width = item.width;
 		Item.height = item.height;

@@ -133,7 +133,6 @@ public class JewelrySlot : UIPanel {
 						Main.LocalPlayer.inventory[58] = localclone;
 						SlottedItem = mouse;
 					}
-
 				}
 				else {
 					var mouse = Main.mouseItem.Clone();
