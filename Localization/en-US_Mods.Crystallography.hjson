@@ -25,7 +25,44 @@ ArtifactUI.HintSlotItem: Click while holding a gem in your cursor to slot it her
 
 GemEffects: {
 	Header: Gem Effects:
-	IncreaseDamageResistance: Increases your damage reduction by {0}
+	IncreaseDamageResistance: Increases your damage reduction by {0}%
 	IncreaseDefense: Boosts your defense by {0}
-	IncreaseMaxHealth: Increases your max health by {0}
+	IncreaseMaxHealth: Increases your max life by {0}%
+	DecreaseAggro: Enemies are less likely to target you
+	IncreaseMinionSlots: Increases your max number of minions by 1, but decreases your max number of sentries by 1
+	IncreaseSummonDamage: Increases your summon damage by {0}%
+	IncreaseTurretSlots: Increases your max number of sentries by 1, but decreases your max number of minions by 1
+	CumulativeCritChance: Hits grant a cumulative {0}% extra critical strike chance, resetting whenever you score a critical hit against that target
+	IncreaseCritChance: Increases your critical strike chance by {0}%
+	IncreaseCritDamage: Increases your critical strike damage by {0}%
+	IncreaseCritDamageDecreaseNonCritDamage: Increases your critical strike damage by {0}%, but decreases your non-critical-strike damage by {1}%
+	RecoveryItemOnCrit: When scoring a critical hit, you spawn a recovery item. XX second cooldown
+	SpeedBoostOnCrit: When scoring a critical hit, your speed is increased by {0} for XX seconds
+	FarTargetsIncreaseDamage: When hitting targets at a distance, your damage is increased by {0}%
+	IncreaseArmorPenetration: Increases your armor penetration by {0}
+	IncreaseAttackSpeedOnHit: When you get hit, your attack speed is increased by {0}% for XX seconds
+	IncreaseRangedDamage: Increases your ranged damage by {0}%
+	MarkTarget: A random enemy is marked for death, dealing damage to this enemy is increased by {0}%
+	ReduceAmmoConsumption: Increases chance to save ammo by {0}%
+	IncreaseAttackSpeed: Increases your attack speed by {0}%
+	IncreaseFallResistance: Increases your fall resistance
+	IncreaseJumpSpeed: Increases your jump speed by {0}%
+	IncreaseKnockback: Increases your knockback by {0}%
+	IncreaseMiningSpeed: Increases your mining speed by {0}%
+	IncreaseMovementSpeed: Increases your movement speed by {0}%
+	IncreaseToolRange: Increases the range of your tools by {0}%
+    IncreaseAggro: Enemies are more likely to target you
+    IncreaseKnockbackResistance: Increases resistance to knockback by {0}%
+    IncreaseMeleeAttackSpeed: Increases your melee attack speed by {0}%
+    IncreaseMeleeDamage: Increases your melee damage by {0}%
+    LowHealthIncreaseDefenseEffectiveness: Increases the effectiveness of defense the lower your health becomes, up to {0}%
+    NearbyIncreaseDamage: Increases damage done to nearby enemies by {0}%
+    OnKillAttackSpeed: When you kill an enemy, your attack speed is increased by {0}% for XX seconds
+    IncreaseMagicDamage: Increases your magic damage by {0}%
+    IncreaseManaRegeneration: Increases your mana regeneration by {0}%
+    IncreaseMaxMana: Increases your max mana by {0}%
+    LowManaIncreaseDamage: Increases your magic damage the lower your mana becomes, up to {0}%
+    ManaStarReduceManaCost: Picking up a mana star reduces mana cost by {0}% for XX seconds. XX second cooldown
+    NoHitReduceManaCost: Avoiding damage for a short time reduces mana cost, up to {0}%
+    IncreaseLuck: Increases your luck by {0}%
 }
