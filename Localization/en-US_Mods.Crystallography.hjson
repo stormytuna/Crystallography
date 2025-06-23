@@ -51,18 +51,21 @@ GemEffects: {
 	IncreaseMiningSpeed: Increases your mining speed by {0}%
 	IncreaseMovementSpeed: Increases your movement speed by {0}%
 	IncreaseToolRange: Increases the range of your tools by {0}%
-    IncreaseAggro: Enemies are more likely to target you
-    IncreaseKnockbackResistance: Increases resistance to knockback by {0}%
-    IncreaseMeleeAttackSpeed: Increases your melee attack speed by {0}%
-    IncreaseMeleeDamage: Increases your melee damage by {0}%
-    LowHealthIncreaseDefenseEffectiveness: Increases the effectiveness of defense the lower your health becomes, up to {0}%
-    NearbyIncreaseDamage: Increases damage done to nearby enemies by {0}%
-    OnKillAttackSpeed: When you kill an enemy, your attack speed is increased by {0}% for XX seconds
-    IncreaseMagicDamage: Increases your magic damage by {0}%
-    IncreaseManaRegeneration: Increases your mana regeneration by {0}%
-    IncreaseMaxMana: Increases your max mana by {0}%
-    LowManaIncreaseDamage: Increases your magic damage the lower your mana becomes, up to {0}%
-    ManaStarReduceManaCost: Picking up a mana star reduces mana cost by {0}% for XX seconds. XX second cooldown
-    NoHitReduceManaCost: Avoiding damage for a short time reduces mana cost, up to {0}%
-    IncreaseLuck: Increases your luck by {0}%
+	IncreaseAggro: Enemies are more likely to target you
+	IncreaseKnockbackResistance: Increases resistance to knockback by {0}%
+	IncreaseMeleeAttackSpeed: Increases your melee attack speed by {0}%
+	IncreaseMeleeDamage: Increases your melee damage by {0}%
+	LowHealthIncreaseDefenseEffectiveness: Increases the effectiveness of defense the lower your health becomes, up to {0}%
+	NearbyIncreaseDamage: Increases damage done to nearby enemies by {0}%
+	OnKillAttackSpeed: When you kill an enemy, your attack speed is increased by {0}% for XX seconds
+	IncreaseMagicDamage: Increases your magic damage by {0}%
+	IncreaseManaRegeneration: Increases your mana regeneration by {0}%
+	IncreaseMaxMana: Increases your max mana by {0}%
+	LowManaIncreaseDamage: Increases your magic damage the lower your mana becomes, up to {0}%
+	ManaStarReduceManaCost: Picking up a mana star reduces mana cost by {0}% for XX seconds. XX second cooldown
+	NoHitReduceManaCost: Avoiding damage for a short time reduces mana cost, up to {0}%
+	IncreaseLuck: Increases your luck by {0}%
+	SentryFreshSpawnDamageIncrease: Increases damage dealt by sentries by {0}% for 30 seconds after spawning
+	UniqueMinionsIncreaseDamage: Increases your summon damage by {0}% for each unique minion you have active
+	WhipSweetSpot: Increases damage dealt by whips by {0}% when hitting a target at the tip of your whip
 }
