@@ -58,7 +58,7 @@ public class RecoveryItemOnCritPlayer : ModPlayer
 public class RecoveryItem : ModItem
 {
 	public override string Texture {
-		get => "Terraria/Images/Item_50";
+		get => $"{nameof(Crystallography)}/Assets/Textures/RecoveryItemFruit";
 	}
 
 	public const int HealthAmount = 10;
