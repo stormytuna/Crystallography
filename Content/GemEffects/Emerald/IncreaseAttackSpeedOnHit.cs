@@ -1,4 +1,6 @@
+using Crystallography.Content.GemEffects.Diamond;
 using Crystallography.Core.Artifacts;
+using Terraria.Localization;
 
 namespace Crystallography.Content.GemEffects.Emerald;
 
@@ -10,11 +12,15 @@ public class IncreaseAttackSpeedOnHit : GemEffect
 		player.GetModPlayer<IncreaseAttackSpeedOnHitPlayer>().Active = true;
 		player.GetModPlayer<IncreaseAttackSpeedOnHitPlayer>().Strength += data.Strength;
 	}
+	
+	public override LocalizedText GetFormattedTooltip(float strength) {
+		return Tooltip.WithFormatArgs(IncreaseAttackSpeedOnHitPlayer.MaxAttackSpeedIncrease * strength);
+	}
 }
 
 public class IncreaseAttackSpeedOnHitPlayer : ModPlayer
 {
-	private const float MaxAttackSpeedIncrease = 0.5f;
+	public const float MaxAttackSpeedIncrease = 0.5f;
 	private const int MaxAttackSpeedTimer = 3 * 60;
 	
 	public bool Active = false;

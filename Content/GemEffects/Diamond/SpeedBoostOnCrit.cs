@@ -1,4 +1,5 @@
 using Crystallography.Core.Artifacts;
+using Terraria.Localization;
 
 namespace Crystallography.Content.GemEffects.Diamond;
 
@@ -10,12 +11,16 @@ public class SpeedBoostOnCrit : GemEffect
 		player.GetModPlayer<SpeedBoostOnCritPlayer>().Active = true;
 		player.GetModPlayer<SpeedBoostOnCritPlayer>().Strength += data.Strength;
 	}
+	
+	public override LocalizedText GetFormattedTooltip(float strength) {
+		return Tooltip.WithFormatArgs(SpeedBoostOnCritPlayer.BaseEffect * strength);
+	}
 }
 
 public class SpeedBoostOnCritPlayer : ModPlayer
 {
 	private const int SpeedBoostTimeMax = 4 * 60;
-	private const float BaseEffect = 0.5f;
+	public const float BaseEffect = 0.5f;
 	
 	public bool Active = false;
 	public float Strength = 0f;
