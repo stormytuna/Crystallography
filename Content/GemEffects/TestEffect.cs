@@ -1,7 +1,8 @@
-using Crystallography.Core.Artifacts;
+/*using Crystallography.Core.Artifacts;
 using Crystallography.Content.Items;
 using Terraria.Localization;
 
+// thank you for your service, test effect.
 namespace Crystallography.Content;
 /// <summary>
 /// Example of a Gem Effect.
@@ -17,3 +18,4 @@ public class TestEffect : GemEffect {
 		return Tooltip;
 	}
 }
+*/ 

@@ -9,6 +9,7 @@ using Terraria.GameContent.UI.Elements;
 using Terraria.Localization;
 using Terraria.ModLoader.IO;
 using Terraria.UI;
+using Terraria.WorldBuilding;
 
 namespace Crystallography.Core.Artifacts;
 
@@ -101,7 +102,7 @@ public abstract class ArtifactItem : ModItem {
 				continue;
 			}
 			
-			var tooltip = $"[i:{gemItem.type}] {gem.DisplayName}";
+			var tooltip = $"[i:{gem.Data.Type}] {ContentSamples.ItemsByType[gem.Data.Type].Name}";
 			gemTooltips.Add(new TooltipLine(Mod, "Gem", tooltip));
 
 			if (Keyboard.GetState().IsKeyUp(Keys.LeftShift)) {

@@ -20,6 +20,6 @@ public class DefenseIncreaseDamage : GemEffect
 	}
 
 	public override LocalizedText GetFormattedTooltip(float strength) {
-		return Tooltip.WithFormatArgs(DamageIncrease * strength, DefenseNeeded, GetEffectStrength(Main.LocalPlayer, strength));
+		return Tooltip.WithFormatArgs((int)(2 * strength), 5, GetEffectStrength(Main.LocalPlayer, strength));
 	}
 }

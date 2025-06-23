@@ -33,8 +33,7 @@ public class UIManagerSystem : ModSystem {
 			}
 			else {
 				GemSlotsMenu.SetState(ArtifactInterface);
-				var clone = item.Item.Clone().ModItem as ArtifactItem;
-				ArtifactInterface.TheArtifact = clone;
+				ArtifactInterface.TheArtifact = item;
 			}
 		}
 	}

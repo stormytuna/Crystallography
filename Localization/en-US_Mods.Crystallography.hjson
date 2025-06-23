@@ -116,7 +116,7 @@ GemEffects: {
 	OnKillAttackSpeed: When you kill an enemy, your attack speed is increased by {0:P1} for a short time
 	IncreaseMagicDamage: Increases your magic damage by {0:P1}
 	IncreaseManaRegeneration: Increases your mana regeneration by {0:P1}
-	IncreaseMaxMana: Increases your max mana by {0:F0}
+	IncreaseMaxMana: Increases your max mana by {0}
 	LowManaIncreaseDamage: Increases your magic damage the lower your mana becomes, up to {0:P1}
 	ManaStarReduceManaCost: Picking up a mana star reduces mana cost by {0:P1} for a short time
 	NoHitReduceManaCost: Avoiding damage reduces mana cost, up to {0:P1}
@@ -146,3 +146,7 @@ ArtifactMaterial: {
 
 	DefaultCallbackDescription: Amplifies effect power by {0}x
 }
+
+WorldGenMessage: Growing Geodes...
+ShiftToExpand: "[c/BBBBBB:Hold Shift to expand]"
+Tiles.Geode.MapEntry: Geode
