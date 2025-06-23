@@ -148,5 +148,4 @@ ArtifactMaterial: {
 }
 
 WorldGenMessage: Growing Geodes...
-ShiftToExpand: "[c/BBBBBB:Hold Shift to expand]"
 Tiles.Geode.MapEntry: Geode

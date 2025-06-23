@@ -9,7 +9,8 @@ public class GemballMachineItem : ModItem
 		Item.DefaultToPlaceableTile(ModContent.TileType<GemballMachine>());
 		Item.width = 28;
 		Item.height = 34;
-		Item.value = Item.buyPrice(gold: 15);
+		Item.value = Item.sellPrice(gold: 15);
+		Item.rare = ItemRarityID.Blue;
 	}
 }
 
@@ -17,6 +18,10 @@ public class GemballMachineSell : GlobalNPC
 {
 	public override bool AppliesToEntity(NPC entity, bool lateInstantiation) {
 		return entity.type is NPCID.PartyGirl;
+	}
+
+	public override void ModifyShop(NPCShop shop) {
+		shop.InsertAfter(ItemID.BubbleMachine, ModContent.ItemType<GemballMachineItem>());
 	}
 }
 
