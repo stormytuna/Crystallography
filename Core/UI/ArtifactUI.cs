@@ -27,9 +27,6 @@ public class ArtifactUI : UIState {
 	}	
 	public override void OnInitialize() {
 		Area = new ArtifactSlotRing();
-		var mousestate = Mouse.GetState(); //Main.MouseScreen gets unreliable with zoom/etc.
-		Area.Top.Set(mousestate.Y - 150 * Main.inventoryScale, 0);
-		Area.Left.Set(mousestate.X - 150 * Main.inventoryScale, 0);
 		Area.Width.Set(300 * Main.inventoryScale, 0);
 		Area.Height.Set(300 * Main.inventoryScale, 0);
 		Area.Activate();
@@ -39,11 +36,25 @@ public class ArtifactUI : UIState {
 		Area.Update(gameTime);
 	}
 }
-public class ArtifactSlotRing : UIElement {
+public class ArtifactSlotRing : UIElement
+{
+	private bool _centerOnMouse = false;
 	public override void OnInitialize() {
 		ReinitializeSlots();
 	}
-	public override void Update(GameTime gameTime) {
+	public override void OnActivate() {
+		base.OnActivate();
+		_centerOnMouse = true;
+	}
+	public override void Update(GameTime gameTime) {		
+		base.Update(gameTime);
+		if (_centerOnMouse) {
+			_centerOnMouse = false;
+			Left.Set(Main.mouseX - Width.Pixels / 2f, 0f);
+			Top.Set(Main.mouseY - Height.Pixels / 2f, 0f);
+			Recalculate();
+		}
+                                                    
 		var hovering = false;
 		foreach (var child in Children) {
 			child.Update(gameTime);
@@ -160,7 +171,7 @@ public class ArtifactGemSlotUI : UIPanel {
 		var pos = style.Center();
 		var panelTexture = Assets.Textures.GemSlotPanel;
 		spriteBatch.End();
-		spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, Main.Rasterizer, null, Matrix.Identity);
+		spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, Main.Rasterizer, null, Main.UIScaleMatrix);
 		spriteBatch.Draw(panelTexture.Value, pos, null, Color.White, 0, panelTexture.Size()/2, Scale* 0.6f *1.2f, SpriteEffects.None, 0);
 		if (Gem is not null && Gem.ModItem is Gem) {
 			var data = ((Gem)Gem.ModItem).Data;
