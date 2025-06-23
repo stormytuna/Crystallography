@@ -7,10 +7,10 @@
 	<PropertyGroup>
 		
 	</PropertyGroup>
+	<ItemGroup>
+	  <Folder Include="Content\Tiles\" />
+	</ItemGroup>
 
 	<!-- References -->
-	<ItemGroup>
-		
-	</ItemGroup>
 
 </Project>

@@ -23,10 +23,55 @@ Items: {
 		DisplayName: Jewelry Station
 		Tooltip: ""
 	}
+
+	GoldenRing: {
+		DisplayName: Golden Ring
+		Tooltip: ""
+	}
+
+	UnholyRing: {
+		DisplayName: Unholy Ring
+		Tooltip: Increases the strength of Major effects by 20%
+	}
+
+	LostBand: {
+		DisplayName: Lost Band
+		Tooltip: Increases the strength of Generic Minor effects by 30%
+	}
+
+	GoldenNecklace: {
+		DisplayName: Golden Necklace
+		Tooltip: Increases the strength of Ruby effects by 50%
+	}
+
+	EncrustedNecklace: {
+		DisplayName: Encrusted Necklace
+		Tooltip: Increases the strength of Emerald effects by 50%
+	}
+
+	ShadowflameStrand: {
+		DisplayName: Shadowflame Strand
+		Tooltip: Increases the strength of Sapphire effects by 50%
+	}
+
+	SpiderlegCharm: {
+		DisplayName: Spiderleg Charm
+		Tooltip: Increases the strength of Amethyst effects by 50%
+	}
+
+	Lunecklace: {
+		DisplayName: Lunecklace
+		Tooltip:
+			'''
+			Increases the strength of all effects by 30%
+			'As long as there are stars up above...'
+			'''
+	}
 }
 
 ShiftToExpand: "[c/BBBBBB:Hold Shift to expand]"
-GemData.Strength: Effect Strength: {0}
+RightClickMe: "[c/BBBBBB:Right Click while holding to view slots]"
+GemData.Strength: Effect Strength: {0:F2}
 ArtifactUI.HintSlotItem: Click while holding a gem in your cursor to slot it here.
 
 GemEffects: {
@@ -48,7 +93,7 @@ GemEffects: {
 	IncreaseArmorPenetration: Increases your armor penetration by {0}
 	IncreaseAttackSpeedOnHit: When you get hit, your attack speed is increased by {0:P1} for a short time
 	IncreaseRangedDamage: Increases your ranged damage by {0:P1}
-	MarkTarget: A random enemy is marked for death, dealing damage to this enemy is increased by {0:P1}
+	MarkTargets: A random enemy is marked for death, dealing damage to this enemy is increased by {0:P1}
 	ReduceAmmoConsumption: Increases chance to save ammo by {0:P1}
 	IncreaseAttackSpeed: Increases your attack speed by {0:P1}
 	IncreaseFallResistance: Increases your fall resistance
@@ -66,7 +111,7 @@ GemEffects: {
 	OnKillAttackSpeed: When you kill an enemy, your attack speed is increased by {0:P1} for a short time
 	IncreaseMagicDamage: Increases your magic damage by {0:P1}
 	IncreaseManaRegeneration: Increases your mana regeneration by {0:P1}
-	IncreaseMaxMana: Increases your max mana by {0}
+	IncreaseMaxMana: Increases your max mana by {0:F0}
 	LowManaIncreaseDamage: Increases your magic damage the lower your mana becomes, up to {0:P1}
 	ManaStarReduceManaCost: Picking up a mana star reduces mana cost by {0:P1} for a short time
 	NoHitReduceManaCost: Avoiding damage reduces mana cost, up to {0:P1}

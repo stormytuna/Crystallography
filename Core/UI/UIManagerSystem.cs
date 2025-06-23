@@ -10,27 +10,12 @@ public class UIManagerSystem : ModSystem {
 	public static UserInterface GemSlotsMenu { get; private set; }
 	internal static ArtifactUI ArtifactInterface;
 	public static UserInterface JewelryStationUI { get; private set; }
-	internal static JewelryUI JewelryInterface;
 	public override void Load() {
 		if (!Main.dedServ) {
 			ArtifactInterface = new();
 			GemSlotsMenu = new();
 			JewelryStationUI = new();
-			JewelryInterface = new();
 			//GemSlotsMenu.SetState(ArtifactInterface);
-		}
-	}
-	internal static void ToggleJewelryUI(Point tilePos) {
-		bool isActive = JewelryStationUI.CurrentState != null;
-		if (isActive) {
-			JewelryStationUI.SetState(null);
-			Main.NewText("disabled");
-		}
-		else {
-			Main.NewText("enabled");
-			JewelryStationUI.SetState(JewelryInterface);
-			Main.NewText(JewelryStationUI.CurrentState);
-			JewelryInterface.JewelryStationPosition = tilePos;
 		}
 	}
 	/// <summary>
