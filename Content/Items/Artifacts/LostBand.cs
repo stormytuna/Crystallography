@@ -1,4 +1,5 @@
 using Crystallography.Core.Artifacts;
+using Terraria.Enums;
 using Terraria.GameContent.ItemDropRules;
 
 namespace Crystallography.Content.Items.Artifacts;
@@ -7,6 +8,10 @@ public class LostBand : ArtifactItem
 {
 	public override int GemCount { get => 1; }
 
+	public override void SetArtifactDefaults() {
+		Item.SetShopValues(ItemRarityColor.Orange3, Item.buyPrice(gold: 2));
+	}
+	
 	public override GemData ModifyGemData(Player player, GemEffect effect, GemData data) {
 		if (effect.GemType == ItemID.WhitePearl) {
 			return data with { Strength = data.Strength * 1.3f };

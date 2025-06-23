@@ -1,12 +1,17 @@
 using Crystallography.Core.Artifacts;
 using Terraria.DataStructures;
+using Terraria.Enums;
 
 namespace Crystallography.Content.Items.Artifacts;
 
 public class EncrustedNecklace : ArtifactItem
 {
 	public override int GemCount { get => 2; }
-	
+
+	public override void SetArtifactDefaults() {
+		Item.SetShopValues(ItemRarityColor.LightRed4, Item.buyPrice(gold: 3));
+	}
+
 	public override GemData ModifyGemData(Player player, GemEffect effect, GemData data) {
 		if (data.Type == ItemID.Emerald) {
 			return data with { Strength = data.Strength * 1.3f };

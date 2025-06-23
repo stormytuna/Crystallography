@@ -1,10 +1,15 @@
 using Crystallography.Core.Artifacts;
+using Terraria.Enums;
 
 namespace Crystallography.Content.Items.Artifacts;
 
 public class UnholyRing : ArtifactItem
 {
 	public override int GemCount { get => 1; }
+	
+	public override void SetArtifactDefaults() {
+		Item.SetShopValues(ItemRarityColor.Green2, Item.buyPrice(gold: 1));
+	}
 
 	public override GemData ModifyGemData(Player player, GemEffect effect, GemData data) {
 		if (effect.Type == GemEffect.EffectType.Major) {

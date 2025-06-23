@@ -1,4 +1,5 @@
 using Crystallography.Core.Artifacts;
+using Terraria.Enums;
 using Terraria.GameContent.ItemDropRules;
 
 namespace Crystallography.Content.Items.Artifacts;
@@ -7,6 +8,10 @@ public class GoldenNecklace : ArtifactItem
 {
 	public override int GemCount { get => 2; }
 
+	public override void SetArtifactDefaults() {
+		Item.SetShopValues(ItemRarityColor.LightRed4, Item.buyPrice(gold: 3));
+	}
+	
 	public override GemData ModifyGemData(Player player, GemEffect effect, GemData data) {
 		if (data.Type == ItemID.Ruby) {
 			return data with { Strength = data.Strength * 1.3f };

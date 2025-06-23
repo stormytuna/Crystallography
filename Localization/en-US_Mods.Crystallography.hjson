@@ -67,6 +67,11 @@ Items: {
 			'As long as there are stars up above...'
 			'''
 	}
+
+	GemballMachineItem: {
+		DisplayName: Gemball Machine
+		Tooltip: ""
+	}
 }
 
 ShiftToExpand: "[c/BBBBBB:Hold Shift to expand]"
