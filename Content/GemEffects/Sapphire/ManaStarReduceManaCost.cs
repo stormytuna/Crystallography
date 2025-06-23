@@ -1,4 +1,5 @@
 using Crystallography.Core.Artifacts;
+using Terraria.Localization;
 
 namespace Crystallography.Content.GemEffects.Sapphire;
 
@@ -10,13 +11,17 @@ public class ManaStarReduceManaCost : GemEffect
 		player.GetModPlayer<ManaStarReduceManaCostPlayer>().Active = true;
 		player.GetModPlayer<ManaStarReduceManaCostPlayer>().Strength += data.Strength;
 	}
+	
+	public override LocalizedText GetFormattedTooltip(float strength) {
+		return Tooltip.WithFormatArgs(ManaStarReduceManaCostPlayer.ManaCostReduction * strength);
+	}
 }
 
 public class ManaStarReduceManaCostPlayer : ModPlayer
 {
 	private const int ManaCostReductionTimerMax = 2 * 60;
 	private const int ManaCostReductionCooldownMax = 5 * 60;
-	private const float ManaCostReduction = 0.4f;
+	public const float ManaCostReduction = 0.4f;
 	
 	public bool Active;
 	public float Strength;

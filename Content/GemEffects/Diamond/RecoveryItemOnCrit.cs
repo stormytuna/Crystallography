@@ -1,4 +1,5 @@
 using Crystallography.Core.Artifacts;
+using Terraria.Localization;
 
 namespace Crystallography.Content.GemEffects.Diamond;
 
@@ -9,6 +10,10 @@ public class RecoveryItemOnCrit : GemEffect
 	public override void Apply(Player player, GemData data) {
 		player.GetModPlayer<RecoveryItemOnCritPlayer>().Active = true;
 		player.GetModPlayer<RecoveryItemOnCritPlayer>().Strength += data.Strength;
+	}
+	
+	public override LocalizedText GetFormattedTooltip(float strength) {
+		return Tooltip.WithFormatArgs((int)(RecoveryItem.HealthAmount * strength));
 	}
 }
 
@@ -53,11 +58,11 @@ public class RecoveryItemOnCritPlayer : ModPlayer
 public class RecoveryItem : ModItem
 {
 	public override string Texture {
-		get => "Terraria/Images/Item_50";
+		get => $"{nameof(Crystallography)}/Assets/Textures/RecoveryItemFruit";
 	}
 
-	private const int HealthAmount = 10;
-	private const int ManaAmount = 10;
+	public const int HealthAmount = 10;
+	public const int ManaAmount = 10;
 	
 	public override void SetStaticDefaults() {
 		ItemID.Sets.ItemsThatShouldNotBeInInventory[Type] = true;

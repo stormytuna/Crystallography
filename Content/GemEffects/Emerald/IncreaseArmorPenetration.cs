@@ -1,5 +1,7 @@
 using Crystallography.Core.Artifacts;
 using Crystallography.Content.Items;
+using Terraria.Localization;
+
 namespace Crystallography.Content.GemEffects.Emerald;
 
 public class IncreaseArmorPenetration : GemEffect
@@ -7,6 +9,14 @@ public class IncreaseArmorPenetration : GemEffect
 	public override EffectType Type => EffectType.Minor;
 	public override int GemType => ItemID.Emerald;
 	public override void Apply(Player player, GemData data) {
-		player.GetArmorPenetration(DamageClass.Generic) += 10f * data.Strength;
+		player.GetArmorPenetration(DamageClass.Generic) += GetEffectStrength(player, data.Strength);
+	}
+	
+	public static float GetEffectStrength(Player player, float strength) {
+		return 10f * strength;	
+	}
+	
+	public override LocalizedText GetFormattedTooltip(float strength) {
+		return Tooltip.WithFormatArgs(GetEffectStrength(Main.LocalPlayer, strength));
 	}
 }

@@ -1,5 +1,6 @@
 using System.IO;
 using Crystallography.Core.Artifacts;
+using Terraria.Localization;
 
 namespace Crystallography.Content.GemEffects.Sapphire;
 
@@ -11,6 +12,10 @@ public class NoHitReduceManaCost : GemEffect
 		player.GetModPlayer<NoHitReduceManaCostPlayer>().Active = true;
 		player.GetModPlayer<NoHitReduceManaCostPlayer>().Strength += data.Strength;
 	}
+	
+	public override LocalizedText GetFormattedTooltip(float strength) {
+		return Tooltip.WithFormatArgs(NoHitReduceManaCostPlayer.NoHitMaxEffect * strength);
+	}
 }
 
 public class NoHitReduceManaCostPlayer : ModPlayer
@@ -18,7 +23,7 @@ public class NoHitReduceManaCostPlayer : ModPlayer
 	private const float NoHitCounterForMinEffect = 6 * 60;
 	private const float NoHitCounterForMaxEffect = 20 * 60;
 	private const float NoHitMinEffect = 0f;
-	private const float NoHitMaxEffect = 0.4f;
+	public const float NoHitMaxEffect = 0.4f;
 	
 	public bool Active;
 	public float Strength;

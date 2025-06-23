@@ -24,10 +24,8 @@ public class UIManagerSystem : ModSystem {
 		bool isActive = JewelryStationUI.CurrentState != null;
 		if (isActive) {
 			JewelryStationUI.SetState(null);
-			Main.NewText("disabled");
 		}
 		else {
-			Main.NewText("enabled");
 			JewelryStationUI.SetState(JewelryInterface);
 			Main.NewText(JewelryStationUI.CurrentState);
 			JewelryInterface.JewelryStationPosition = tilePos;
@@ -48,8 +46,7 @@ public class UIManagerSystem : ModSystem {
 			}
 			else {
 				GemSlotsMenu.SetState(ArtifactInterface);
-				var clone = item.Item.Clone().ModItem as ArtifactItem;
-				ArtifactInterface.TheArtifact = clone;
+				ArtifactInterface.TheArtifact = item;
 			}
 		}
 	}

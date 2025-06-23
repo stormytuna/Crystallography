@@ -23,6 +23,7 @@ public class Gem : ModItem {
 		var item = ContentSamples.ItemsByType[Data.Type];
 		Item.width = item.width;
 		Item.height = item.height;
+		Item.value = item.value + item.value * (int)Data.Strength;
 		Item.SetNameOverride(item.Name);
 	}
 	// this will also need a draw layer, unless the items never have a usestyle, then not :steamhappy:
@@ -38,14 +39,16 @@ public class Gem : ModItem {
 		TooltipLine top = new TooltipLine(Mod, "GemStrength", Language.GetText("Mods.Crystallography.GemData.Strength").WithFormatArgs(Data.Strength).Value);
 		top.OverrideColor = Color.Lerp(Color.DarkGray, new Color(185,255,246), Data.Strength / 1.5f);
 		tooltips.Add(top);
-		TooltipLine header = new TooltipLine(Mod, "EffectsHeader", Language.GetText("Mods.Crystallography.GemEffects.Header").Value);
-		tooltips.Add(header);
-		TooltipLine major = new TooltipLine(Mod, "MajorEffect", $"[i:{ItemID.GoldCoin}]" + $"{Language.GetText($"Mods.Crystallography.GemEffects.{Data.Effects[0].Name}").WithFormatArgs(Data.Strength).Value}");
-		tooltips.Add(major);
-		TooltipLine minor = new TooltipLine(Mod, "MinorEffect", $"[i:{ItemID.SilverCoin}]" + $"{Language.GetText($"Mods.Crystallography.GemEffects.{Data.Effects[1].Name}").WithFormatArgs(Data.Strength).Value}");
-		tooltips.Add(minor);
-		TooltipLine generic = new TooltipLine(Mod, "GenericEffect", $"[i:{ItemID.CopperCoin}]" + $"{Language.GetText($"Mods.Crystallography.GemEffects.{Data.Effects[2].Name}").WithFormatArgs(Data.Strength).Value}");
-		tooltips.Add(generic);
+		if (Data.Effects is not null) {
+			TooltipLine header = new TooltipLine(Mod, "EffectsHeader", Language.GetText("Mods.Crystallography.GemEffects.Header").Value);
+			tooltips.Add(header);
+			TooltipLine major = new TooltipLine(Mod, "MajorEffect", $"[i:{ItemID.GoldCoin}]" + Data.Effects[0].GetFormattedTooltip(Data.Strength));
+			tooltips.Add(major);
+			TooltipLine minor = new TooltipLine(Mod, "MinorEffect", $"[i:{ItemID.SilverCoin}]" + Data.Effects[1].GetFormattedTooltip(Data.Strength));
+			tooltips.Add(minor);
+			TooltipLine generic = new TooltipLine(Mod, "GenericEffect", $"[i:{ItemID.CopperCoin}]" + Data.Effects[2].GetFormattedTooltip(Data.Strength));
+			tooltips.Add(generic);
+		}
 	}
 	public override void SaveData(TagCompound tag) {
 		tag["gemID"] = Data.Type;
@@ -65,5 +68,11 @@ public class Gem : ModItem {
 			effects[i] = GemTypeLoader.GemEffectLookup[(string)tag[$"gemEffect{i}"]];
 		}
 		Data = new GemData(id, strength, effects, gemColor);
+		SetDefaults();
+	}
+	public override ModItem Clone(Item newEntity) {
+		var clone = (Gem)base.Clone(newEntity);
+		clone.Data = Data;
+		return clone;
 	}
 }

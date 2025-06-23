@@ -75,7 +75,7 @@ public class ArtifactSlotRing : UIElement {
 			var artifact = ((ArtifactUI)Parent).TheArtifact;
 			this.RemoveAllChildren();
 			for (int i = 0; i < artifact.GemCount; i++) {
-				Vector2 desiredPos = new Vector2(0, Height.Pixels/2.5f).RotatedBy((MathHelper.TwoPi/artifact.GemCount)*i, Vector2.Zero);
+				Vector2 desiredPos = new Vector2(0, Height.Pixels / 2.5f).RotatedBy((MathHelper.TwoPi / artifact.GemCount) * i, Vector2.Zero);
 				Vector2 center = Vector2.Zero;
 				ArtifactGemSlotUI slot = new();
 				slot.HAlign = 0.5f;
@@ -119,6 +119,7 @@ public class ArtifactGemSlotUI : UIPanel {
 					Main.mouseItem.TurnToAir(true);
 					Main.LocalPlayer.inventory[58].TurnToAir(true);
 					parent.TheArtifact.Gems[whoAmI] = Gem.Clone();
+					Main.NewText(parent.TheArtifact.Gems[whoAmI]);
 				}
 				else if (!Gem.IsAir) {
 					var gemLocal = Gem.Clone();
@@ -129,6 +130,7 @@ public class ArtifactGemSlotUI : UIPanel {
 					Main.mouseItem = gemLocal;
 					Main.LocalPlayer.inventory[58] = gemLocal;
 					parent.TheArtifact.Gems[whoAmI] = Gem.Clone();
+					Main.NewText(parent.TheArtifact.Gems[whoAmI]);
 				}
 			}
 			else if (Main.mouseItem.IsAir && Gem is not null && !Gem.IsAir) {
@@ -139,6 +141,7 @@ public class ArtifactGemSlotUI : UIPanel {
 				Main.LocalPlayer.inventory[58] = item;
 				Gem.TurnToAir(false);
 				parent.TheArtifact.Gems[whoAmI] = Gem.Clone();
+				Main.NewText(parent.TheArtifact.Gems[whoAmI]);
 			}
 		}
 	}
@@ -160,7 +163,7 @@ public class ArtifactGemSlotUI : UIPanel {
 		var pos = style.Center();
 		var panelTexture = Assets.Textures.GemSlotPanel;
 		spriteBatch.End();
-		spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, Main.Rasterizer, null, Matrix.Identity);
+		spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, Main.Rasterizer, null, Main.UIScaleMatrix);
 		spriteBatch.Draw(panelTexture.Value, pos, null, Color.White, 0, panelTexture.Size()/2, Scale* 0.6f *1.2f, SpriteEffects.None, 0);
 		if (Gem is not null && Gem.ModItem is Gem) {
 			var data = ((Gem)Gem.ModItem).Data;

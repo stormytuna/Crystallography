@@ -2,6 +2,7 @@ using Crystallography.Core.Artifacts;
 using ReLogic.Content;
 using Terraria.DataStructures;
 using Terraria.GameContent;
+using Terraria.Localization;
 
 namespace Crystallography.Content.GemEffects.Emerald;
 
@@ -13,13 +14,17 @@ public class MarkTargets : GemEffect
 		player.GetModPlayer<MarkTargetsPlayer>().Active = true;
 		player.GetModPlayer<MarkTargetsPlayer>().Strength += data.Strength;
 	}
+
+	public override LocalizedText GetFormattedTooltip(float strength) {
+		return Tooltip.WithFormatArgs(MarkTargetsPlayer.ExtraDamageAgainstMark * strength);
+	}
 }
 
 public class MarkTargetsPlayer : ModPlayer
 {
 	private const int MarkInactivityTimeMax = 8 * 60;
 	private const float MaxMarkRange = 100f * 16f;
-	private const float ExtraDamageAgainstMark = 0.2f;
+	public const float ExtraDamageAgainstMark = 0.2f;
 	
 	public bool Active = false;
 	public float Strength = 0f;

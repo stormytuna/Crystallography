@@ -9,7 +9,13 @@ public static class GemTypeLoader {
 	public static readonly List<int> GemTypes = new List<int>();
 	public static readonly Dictionary<int, Color[]> GemTypeToColorPool = new Dictionary<int, Color[]>();
 	static GemTypeLoader() {
-		GemTypeToColorPool[ItemID.Amber] = [Color.LightGoldenrodYellow, Color.PaleGoldenrod, Color.IndianRed, Color.LightYellow];
+		GemTypeToColorPool[ItemID.Amber] = [Color.LightGoldenrodYellow, Color.PaleGoldenrod, Color.LightYellow, Color.White];
+		GemTypeToColorPool[ItemID.Topaz] = [Color.LightGoldenrodYellow, Color.PaleGoldenrod, Color.Goldenrod, Color.LightYellow, Color.White];
+		GemTypeToColorPool[ItemID.Ruby] = [Color.IndianRed, Color.OrangeRed, Color.Pink, Color.HotPink, Color.White];
+		GemTypeToColorPool[ItemID.Emerald] = [Color.Lime, Color.LimeGreen, Color.LightSeaGreen, Color.MediumSpringGreen, Color.MintCream, Color.White];
+		GemTypeToColorPool[ItemID.Sapphire] = [Color.AliceBlue, Color.Cyan, Color.LightSkyBlue, Color.LightCyan, Color.BlueViolet, Color.White];
+		GemTypeToColorPool[ItemID.Amethyst] = [Color.Purple, Color.Violet, Color.White, Color.LightPink, Color.MediumPurple, Color.PaleVioletRed];
+		GemTypeToColorPool[ItemID.Diamond] = [Color.LightSkyBlue, Color.LightPink, Color.White, Color.WhiteSmoke, Color.NavajoWhite];
 	}
 	/// <summary>
 	///		Returns a <see cref="GemEffect"/> instance based on its class name.

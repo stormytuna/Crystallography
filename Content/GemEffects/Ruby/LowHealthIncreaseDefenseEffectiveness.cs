@@ -1,19 +1,20 @@
 using Crystallography.Core.Artifacts;
-using Crystallography.Content.Items;
 using Terraria.Localization;
 
 namespace Crystallography.Content.GemEffects.Ruby;
 
-public class IncreaseMeleeDamage : GemEffect
+public class LowHealthIncreaseDefenseEffectiveness : GemEffect
 {
-	public override EffectType Type => EffectType.Minor;
+	public override EffectType Type => EffectType.Major;
 	public override int GemType => ItemID.Ruby;
 	public override void Apply(Player player, GemData data) {
-		player.GetDamage(DamageClass.Melee) += GetEffectStrength(player, data.Strength);
+		int startLife = player.statLifeMax2 / 2;
+		float extraEffectiveness = Utils.Remap(player.statLife, startLife, 0, 0f, 0.5f);
+		player.DefenseEffectiveness *= (1f + (extraEffectiveness * GetEffectStrength(player, data.Strength)));
 	}
 	
 	public static float GetEffectStrength(Player player, float strength) {
-		return 0.05f * strength;	
+		return 1f * strength;	
 	}
 	
 	public override LocalizedText GetFormattedTooltip(float strength) {

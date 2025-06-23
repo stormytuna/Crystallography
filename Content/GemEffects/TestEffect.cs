@@ -1,5 +1,8 @@
-using Crystallography.Core.Artifacts;
+/*using Crystallography.Core.Artifacts;
 using Crystallography.Content.Items;
+using Terraria.Localization;
+
+// thank you for your service, test effect.
 namespace Crystallography.Content;
 /// <summary>
 /// Example of a Gem Effect.
@@ -10,4 +13,9 @@ public class TestEffect : GemEffect {
 	public override void Apply(Player player, GemData data) {
 		player.GetDamage(DamageClass.Melee) += 0.05f;
 	}
+
+	public override LocalizedText GetFormattedTooltip(float strength) {
+		return Tooltip;
+	}
 }
+*/ 

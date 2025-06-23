@@ -1,5 +1,7 @@
 using Crystallography.Core.Artifacts;
 using Crystallography.Content.Items;
+using Terraria.Localization;
+
 namespace Crystallography.Content.GemEffects.Ruby;
 
 public class IncreaseKnockbackResistance : GemEffect
@@ -7,7 +9,15 @@ public class IncreaseKnockbackResistance : GemEffect
 	public override EffectType Type => EffectType.Minor;
 	public override int GemType => ItemID.Ruby;
 	public override void Apply(Player player, GemData data) {
-		player.GetModPlayer<KnockbackResistancePlayer>().KnockbackResistance += 0.3f * data.Strength;
+		player.GetModPlayer<KnockbackResistancePlayer>().KnockbackResistance += GetEffectStrength(player, data.Strength);
+	}
+	
+	public static float GetEffectStrength(Player player, float strength) {
+		return 0.3f * strength;	
+	}
+	
+	public override LocalizedText GetFormattedTooltip(float strength) {
+		return Tooltip.WithFormatArgs(GetEffectStrength(Main.LocalPlayer, strength));
 	}
 }
 

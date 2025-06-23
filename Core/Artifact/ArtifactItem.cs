@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using Crystallography.Content.Items;
 using Crystallography.Core.UI;
+using FishUtils.UI;
+using Microsoft.Xna.Framework.Input;
 using Terraria.GameContent.UI.Elements;
 using Terraria.Localization;
 using Terraria.ModLoader.IO;
+using Terraria.UI;
+using Terraria.WorldBuilding;
 
 namespace Crystallography.Core.Artifacts;
 
@@ -88,8 +92,45 @@ public abstract class ArtifactItem : ModItem {
 	public sealed override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player) {
 		return incomingItem.ModItem is not ArtifactItem || equippedItem.ModItem is not ArtifactItem;
 	}
+	public override ModItem Clone(Item newEntity) {
+		var clone = (ArtifactItem)base.Clone(newEntity);
+		clone.Gems = (Item[])Gems?.Clone();
+		return clone;
+	}
 	public override void ModifyTooltips(List<TooltipLine> tooltips) { 
-		base.ModifyTooltips(tooltips); // list material modifier, each gem, if shift is held down also list each gems effects
+		var insertIndex = tooltips.FindIndex(x => x.Mod == "Terraria" && x.Name == "Tooltip0");
+		tooltips[insertIndex].Hide();
 		
+		List<TooltipLine> gemTooltips = new();
+
+		foreach (var gemItem in Gems) {
+			var gem = (gemItem.ModItem as Gem);
+			if (gem is null) {
+				// TODO: tell players they can slot more
+				continue;
+			}
+			
+			var tooltip = $"[i:{gem.Data.Type}] {ContentSamples.ItemsByType[gem.Data.Type].Name}";
+			gemTooltips.Add(new TooltipLine(Mod, "Gem", tooltip));
+
+			if (Keyboard.GetState().IsKeyUp(Keys.LeftShift)) {
+				continue;
+			}
+
+			foreach (var effect in gem.Data.Effects) {
+				var effectTip = effect.GetFormattedTooltip(gem.Data.Strength).Value;
+				
+				var icon = effect.Type == GemEffect.EffectType.Major ? "MajorIcon" : "MinorIcon";
+				var textureTag = TextureTagHandler.CreateTag($"{nameof(Crystallography)}/Assets/Textures/{icon}", effect.Color);
+				
+				gemTooltips.Add(new TooltipLine(Mod, "GemEffect", $"    {textureTag} {effectTip}"));
+			}
+		}
+
+		if (Keyboard.GetState().IsKeyUp(Keys.LeftShift)) {
+			gemTooltips.Add(new TooltipLine(Mod, "ShiftToExpand", Mod.GetLocalization("ShiftToExpand").Value));
+		}
+
+		tooltips.InsertRange(insertIndex, gemTooltips);
 	}
 }
