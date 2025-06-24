@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Crystallography.Content.Items;
 using Crystallography.Core.Artifacts;
+using Microsoft.CodeAnalysis.Text;
 using Terraria.UI;
 
 namespace Crystallography.Core.UI;
@@ -9,13 +10,26 @@ namespace Crystallography.Core.UI;
 public class UIManagerSystem : ModSystem {
 	public static UserInterface GemSlotsMenu { get; private set; }
 	internal static ArtifactUI ArtifactInterface;
-	public static UserInterface JewelryStationUI { get; private set; }
+	public static UserInterface GemballMachineMenu { get; private set; }
+	internal static GemballUI GemballInterface;
+	//public static UserInterface JewelryStationUI { get; private set; }
 	public override void Load() {
 		if (!Main.dedServ) {
 			ArtifactInterface = new();
 			GemSlotsMenu = new();
-			JewelryStationUI = new();
+			GemballMachineMenu = new();
+			GemballInterface = new();
+			//JewelryStationUI = new();
 			//GemSlotsMenu.SetState(ArtifactInterface);
+		}
+	}
+	internal static void ToggleGemballUI(Point position) {
+		if (GemballMachineMenu.CurrentState != null) {
+			GemballMachineMenu.SetState(null);
+		}
+		else {
+			GemballMachineMenu.SetState(GemballInterface);
+			GemballInterface.TilePosition = position;
 		}
 	}
 	/// <summary>
@@ -39,7 +53,14 @@ public class UIManagerSystem : ModSystem {
 	}
 	public override void UpdateUI(GameTime gameTime) {
 		GemSlotsMenu?.Update(gameTime);
-		JewelryStationUI?.Update(gameTime);
+		GemballMachineMenu?.Update(gameTime);
+		if (GemballInterface.TilePosition.ToWorldCoordinates().Distance(Main.LocalPlayer.Center) > 80 && GemballInterface.slot.Slot != null && !GemballInterface.slot.Slot.IsAir) {
+			GemballMachineMenu.SetState(null);
+			var item = GemballInterface.slot.Slot.Clone();
+			Item.NewItem(item.GetSource_DropAsItem(), GemballInterface.TilePosition.ToWorldCoordinates(), item);
+			GemballInterface.slot.Slot.TurnToAir();
+		}
+		//JewelryStationUI?.Update(gameTime);
 	}
 	public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers) {
 		int index = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Dresser Window")); //Vanilla: Interface Logic 3
@@ -56,7 +77,7 @@ public class UIManagerSystem : ModSystem {
 			layers.Insert(index, new LegacyGameInterfaceLayer(
 					"Crystallography: JewelryStationUI",
 					delegate {
-						JewelryStationUI.Draw(Main.spriteBatch, new GameTime());
+						GemballMachineMenu.Draw(Main.spriteBatch, new GameTime());
 						return true;
 					},
 					InterfaceScaleType.UI)

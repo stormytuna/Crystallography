@@ -1,3 +1,4 @@
+using Crystallography.Core.UI;
 using Terraria.GameContent.ObjectInteractions;
 using Terraria.ObjectData;
 
@@ -54,6 +55,7 @@ public class GemballMachine : ModTile
 
 	public override bool RightClick(int i, int j) {
 		// TODO
-		return base.RightClick(i, j);
+		UIManagerSystem.ToggleGemballUI(new Point(i, j));
+		return true;
 	}
 }
