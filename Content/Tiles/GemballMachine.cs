@@ -45,14 +45,6 @@ public class GemballMachine : ModTile
 	public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) {
 		return true;
 	}
-
-	public override void MouseOver(int i, int j) {
-		var player = Main.LocalPlayer;
-		player.noThrow = 2;
-		player.cursorItemIconEnabled = true;
-		player.cursorItemIconText = $"[i:{ItemID.Star}] [i:{ItemID.Star}]";
-	}
-
 	public override bool RightClick(int i, int j) {
 		// TODO
 		UIManagerSystem.ToggleGemballUI(new Point(i, j));
