@@ -54,11 +54,13 @@ public class UIManagerSystem : ModSystem {
 	public override void UpdateUI(GameTime gameTime) {
 		GemSlotsMenu?.Update(gameTime);
 		GemballMachineMenu?.Update(gameTime);
-		if (GemballInterface.TilePosition.ToWorldCoordinates().Distance(Main.LocalPlayer.Center) > 80 && GemballInterface.slot.Slot != null && !GemballInterface.slot.Slot.IsAir) {
-			GemballMachineMenu.SetState(null);
-			var item = GemballInterface.slot.Slot.Clone();
-			Item.NewItem(item.GetSource_DropAsItem(), GemballInterface.TilePosition.ToWorldCoordinates(), item);
-			GemballInterface.slot.Slot.TurnToAir();
+		if (GemballInterface != null) {
+			if (GemballInterface.TilePosition.ToWorldCoordinates().Distance(Main.LocalPlayer.Center) > 80 && GemballInterface.slot.Slot != null && !GemballInterface.slot.Slot.IsAir) {
+				GemballMachineMenu.SetState(null);
+				var item = GemballInterface.slot.Slot.Clone();
+				Item.NewItem(item.GetSource_DropAsItem(), GemballInterface.TilePosition.ToWorldCoordinates(), item);
+				GemballInterface.slot.Slot.TurnToAir();
+			}
 		}
 		//JewelryStationUI?.Update(gameTime);
 	}
