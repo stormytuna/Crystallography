@@ -67,7 +67,7 @@ Minor:
 - Increased critical strike chance
 - Increased critical strike damage
 
-[h3]Topaz - Luck[/h3
+[h3]Topaz - Luck[/h3]
 Major:
 - Grants a chance for enemies to drop extra loot
 - Grants a cumulative chance to dodge attacks, failing to dodge increases the chance, dodging via this method resets it to 0
