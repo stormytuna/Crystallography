@@ -147,7 +147,9 @@ Gemball Machine:
 [hr][/hr]
 
 [h2]Credits[/h2]
-- Jamzojamz and ArcTan for organising the event!
+- ILoveWater for sprites
+- Roton, stormytuna for programming
+- Jamzojamz and ArcTan for organising the event
 
 [hr][/hr]
 
